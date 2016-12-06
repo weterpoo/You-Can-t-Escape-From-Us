@@ -35,3 +35,4 @@ sysinfo.txt
 *.unitypackage
 
 Assets/imported/missile crisis/*
+Assets/missile crisis/Light*
