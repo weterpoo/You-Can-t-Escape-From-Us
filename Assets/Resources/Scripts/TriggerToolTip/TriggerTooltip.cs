@@ -8,6 +8,7 @@ public class TriggerTooltip : MonoBehaviour
     GameObject forwardPosition;
 
     public float raycastDist = -1.0f; // Negative if distance should be infinity
+    public bool sphereCast = false; // True if spherecasts are necessary to detect items
 
     protected string[] validTags =
     {
@@ -53,25 +54,50 @@ public class TriggerTooltip : MonoBehaviour
         Vector3 rayEnd = forwardReferencer.transform.forward;
         Ray myRay = new Ray(rayStart, rayEnd);
 
-        // Debug.Log(this.transform.forward);
-        if (Physics.SphereCast(myRay, 1.0f, out looking, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
+        if (sphereCast)
         {
-            Debug.Log(looking.transform.gameObject.name);
-            foreach (string tag in validTags)
+            // Debug.Log(this.transform.forward);
+            if (Physics.SphereCast(myRay, 1.0f, out looking, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
             {
-                if (looking.transform.gameObject.CompareTag(tag))
+                Debug.Log(looking.transform.gameObject.name);
+                foreach (string tag in validTags)
                 {
-                    looking.transform.SendMessage("showRayCast");
+                    if (looking.transform.gameObject.CompareTag(tag))
+                    {
+                        looking.transform.SendMessage("showRayCast");
+                    }
                 }
             }
-        }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            if (Physics.SphereCast(myRay, 1.0f, out hit, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
+            if (Input.GetButtonDown("Fire1"))
             {
-                hitOptional(hit);
+                if (Physics.SphereCast(myRay, 1.0f, out hit, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
+                {
+                    hitOptional(hit);
+                }
             }
+        } else {
+            // Debug.Log(this.transform.forward);
+            if (Physics.Raycast(myRay, out looking, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
+            {
+                Debug.Log(looking.transform.gameObject.name);
+                foreach (string tag in validTags)
+                {
+                    if (looking.transform.gameObject.CompareTag(tag))
+                    {
+                        looking.transform.SendMessage("showRayCast");
+                    }
+                }
+            }
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (Physics.Raycast(myRay, out hit, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
+                {
+                    hitOptional(hit);
+                }
+            }
+
         }
 
     }

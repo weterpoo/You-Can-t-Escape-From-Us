@@ -18,6 +18,7 @@ TagManager:
   - tv_1
   - tv_2
   - nextState
+  - window
   layers:
   - Default
   - TransparentFX
