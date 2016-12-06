@@ -6,6 +6,18 @@ TagManager:
   tags:
   - interactable
   - tooltip
+  - door
+  - candles
+  - radio
+  - barrels
+  - chair
+  - drawer
+  - bed
+  - painting
+  - record
+  - tv_1
+  - tv_2
+  - nextState
   layers:
   - Default
   - TransparentFX

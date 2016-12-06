@@ -26,9 +26,10 @@ public class TriggerTooltip : MonoBehaviour
 
         if (raycastDist < 0f)
             raycastDist = Mathf.Infinity;
+
     }
 
-    protected void hitOptional(RaycastHit hit)
+    protected virtual void hitOptional(RaycastHit hit)
     {
         /**
          * Do extra with whatever was hit...
@@ -51,10 +52,9 @@ public class TriggerTooltip : MonoBehaviour
         Vector3 rayStart = forwardPosition.transform.position;
         Vector3 rayEnd = forwardReferencer.transform.forward;
         Ray myRay = new Ray(rayStart, rayEnd);
-        
 
         // Debug.Log(this.transform.forward);
-        if (Physics.Raycast(myRay, out looking, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
+        if (Physics.SphereCast(myRay, 1.0f, out looking, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
         {
             Debug.Log(looking.transform.gameObject.name);
             foreach (string tag in validTags)
@@ -68,11 +68,10 @@ public class TriggerTooltip : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (Physics.Raycast(myRay, out hit, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
+            if (Physics.SphereCast(myRay, 1.0f, out hit, raycastDist, 1 << LayerMask.NameToLayer("interactable")))
             {
                 hitOptional(hit);
             }
-
         }
 
     }

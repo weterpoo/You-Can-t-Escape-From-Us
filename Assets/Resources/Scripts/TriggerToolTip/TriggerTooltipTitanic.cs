@@ -34,7 +34,7 @@ public class TriggerTooltipTitanic : TriggerTooltip
         nums = GameObject.Find("numbers");
     }
 
-    new protected void hitOptional(RaycastHit hit)
+    protected override void hitOptional(RaycastHit hit)
     {
         string hit_mark = hit.collider.tag;
         Debug.Log(GameObject.FindWithTag(hit_mark));
