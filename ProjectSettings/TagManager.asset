@@ -19,6 +19,9 @@ TagManager:
   - tv_2
   - nextState
   - window
+  - caesar
+  - egypt_painting
+  - puzzle_painting
   layers:
   - Default
   - TransparentFX
