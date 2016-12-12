@@ -13,7 +13,6 @@ public class PlayerStateWaterGate : MonoBehaviour {
 
     void nextStep()
     {
-        Debug.Log("Next step!");
         state = (State)((int)state + 1);
         
         switch(state) {

@@ -10,7 +10,9 @@ public class TriggerTooltipLobby : TriggerTooltip
             "interactable",
             "caesar",
             "egypt_painting",
-            "puzzle_painting"
+            "puzzle_painting",
+            "watergatedoor",
+            "titanicdoor"
         };
 
         setTags(newTags);

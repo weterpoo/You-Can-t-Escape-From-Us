@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class TriggerTooltip : MonoBehaviour
@@ -40,8 +41,28 @@ public class TriggerTooltip : MonoBehaviour
         {
             if (hit.transform.gameObject.CompareTag(tag))
             {
-                hit.transform.SendMessage("displayFact");
+                if (tag == "titanicdoor" || tag == "watergatedoor")
+                {
+                    jumpLevel(tag);
+                }
+                else
+                {
+                    hit.transform.SendMessage("displayFact");
+                }
             }
+        }
+    }
+
+    protected void jumpLevel(string tag)
+    {
+        switch(tag)
+        {
+            case "titanicdoor":
+                SceneManager.LoadScene("Titanic-peep", LoadSceneMode.Single);
+                break;
+            case "watergatedoor":
+                SceneManager.LoadScene("watergate", LoadSceneMode.Single);
+                break;
         }
     }
 

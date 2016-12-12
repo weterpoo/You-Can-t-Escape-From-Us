@@ -22,6 +22,8 @@ TagManager:
   - caesar
   - egypt_painting
   - puzzle_painting
+  - titanicdoor
+  - watergatedoor
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,5 @@
 ﻿#pragma strict
+import UnityEngine.SceneManagement;
 var doorObject:GameObject;
 var openedDoor:boolean;
 function Start () {
@@ -26,6 +27,8 @@ function OnTriggerStay(other:Collider){
             doorObject.GetComponent.<Animation>().Play();
             openedDoor=false;
             Debug.Log("open");
+            yield WaitForSeconds (1);
+            SceneManager.LoadScene("lobby_new", LoadSceneMode.Single);
         }
 	}
 }
