@@ -36,7 +36,8 @@ public class uitext : MonoBehaviour {
     void Start () {
         panelRef = transform.FindChild("Panel").gameObject;
         imageRef = panelRef.transform.FindChild("Image").gameObject;
-        imageRef.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load(imagePath, typeof(Sprite)) as Sprite;
+        if (imagePath != "")
+            imageRef.GetComponent<UnityEngine.UI.Image>().sprite = Resources.Load(imagePath, typeof(Sprite)) as Sprite;
         textRef = panelRef.transform.FindChild("Text").gameObject;
         textRef.GetComponent<UnityEngine.UI.Text>().text = "";
 
